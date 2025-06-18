@@ -1,9 +1,9 @@
-// Team related types
+// Team model
 export interface Team {
   id: string;
   name: string;
   abbreviation: string;
-  conference: string;
+  conference: 'Eastern' | 'Western';
   logoUrl: string;
   primaryColor: string;
   secondaryColor: string;
@@ -11,7 +11,7 @@ export interface Team {
   seed?: number;
 }
 
-// Playoff rounds
+// Bracket round enumeration
 export enum Round {
   FIRST_ROUND = 0,
   CONFERENCE_SEMIFINALS = 1,
@@ -22,40 +22,45 @@ export enum Round {
 // Information about each round
 export interface RoundInfo {
   name: string;
-  shortName: string;
-  matchupCount: number;
-  nextRound: Round | null;
+  description: string;
+  shortName?: string;
+  matchupCount?: number;
+  nextRound?: Round | null;
 }
 
-// Round information lookup
+// Round information mapping
 export const ROUND_INFO: Record<Round, RoundInfo> = {
   [Round.FIRST_ROUND]: {
     name: 'First Round',
     shortName: '1st',
+    description: 'Best of 7 series',
     matchupCount: 8,
     nextRound: Round.CONFERENCE_SEMIFINALS,
   },
   [Round.CONFERENCE_SEMIFINALS]: {
     name: 'Conference Semifinals',
     shortName: 'Semis',
+    description: 'Best of 7 series',
     matchupCount: 4,
     nextRound: Round.CONFERENCE_FINALS,
   },
   [Round.CONFERENCE_FINALS]: {
     name: 'Conference Finals',
     shortName: 'Conf Finals',
+    description: 'Best of 7 series',
     matchupCount: 2,
     nextRound: Round.NBA_FINALS,
   },
   [Round.NBA_FINALS]: {
     name: 'NBA Finals',
     shortName: 'Finals',
+    description: 'Championship series',
     matchupCount: 1,
     nextRound: null,
   },
 };
 
-// Matchup between two teams
+// Matchup model
 export interface Matchup {
   id: string;
   round: Round;
@@ -68,7 +73,7 @@ export interface Matchup {
   nextMatchupId?: string;
 }
 
-// Entire playoff bracket
+// Bracket model
 export interface Bracket {
   id: string;
   name: string;
@@ -78,4 +83,31 @@ export interface Bracket {
   isPublic: boolean;
   matchups: Matchup[];
   champion: Team | null;
+}
+
+// User model
+export interface User {
+  id: string;
+  username: string;
+  displayName: string;
+  avatarUrl?: string;
+  email?: string;
+}
+
+// Bracket Share model
+export interface BracketShare {
+  id: string;
+  bracketId: string;
+  shareUrl: string;
+  createdAt: string;
+  expiresAt?: string;
+}
+
+// Notification model (for UI)
+export interface Notification {
+  id: string;
+  message: string;
+  type: 'success' | 'error' | 'info' | 'warning';
+  dismissable: boolean;
+  timeout?: number;
 }
