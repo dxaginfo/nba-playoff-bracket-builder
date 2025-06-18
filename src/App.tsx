@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from './store';
-import { setIsMobile } from './store/slices/uiSlice';
-import { fetchTeams } from './store/slices/teamsSlice';
+import { useAppDispatch, useAppSelector } from './store-index';
+import { setIsMobile } from './store-slices';
+import { fetchTeams } from './store-slices';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
-import BracketBuilder from './components/Bracket/BracketBuilder';
+import BracketBuilder from './components/BracketBuilder';
 import TeamSelection from './components/Teams/TeamSelection';
 import BracketList from './components/Bracket/BracketList';
 import NotFound from './pages/NotFound';
