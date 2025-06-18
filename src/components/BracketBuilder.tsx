@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../store-index';
 import { createBracket, fetchTeams, saveBracket, showNotification } from '../store-slices';
 import { ROUND_INFO, Round } from '../types';
-import RoundColumn from './Bracket/RoundColumn';
+import RoundColumn from './RoundColumn';
 import ChampionDisplay from './Bracket/ChampionDisplay';
 import BracketControls from './Bracket/BracketControls';
 
