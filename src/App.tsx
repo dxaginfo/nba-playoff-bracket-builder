@@ -8,6 +8,7 @@ import Footer from './components/common/Footer';
 import BracketBuilder from './components/BracketBuilder';
 import TeamSelection from './components/Teams/TeamSelection';
 import BracketList from './components/Bracket/BracketList';
+import Dashboard from './components/Dashboard';
 import NotFound from './pages/NotFound';
 import Notification from './components/common/Notification';
 import './App.css';
@@ -52,6 +53,7 @@ const App: React.FC = () => {
         <main className="flex-grow container mx-auto px-4 py-6">
           <Routes>
             <Route path="/" element={<BracketBuilder />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/teams" element={<TeamSelection />} />
             <Route path="/brackets" element={<BracketList />} />
             <Route path="/bracket/:id" element={<BracketBuilder />} />
