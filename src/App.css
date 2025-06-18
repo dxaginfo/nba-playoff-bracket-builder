@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
+
+:root {
+  --nba-blue: #17408B;
+  --nba-red: #C9082A;
+  --nba-dark-blue: #0D2240;
+  --nba-silver: #8D9093;
+  --nba-warm-gray: #E6E7E8;
+  
+  --eastern-primary: #1D428A;
+  --eastern-secondary: #C8102E;
+  
+  --western-primary: #862633;
+  --western-secondary: #FDBB30;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900;
+  font-family: 'Inter', sans-serif;
+}
+
+.dark body {
+  @apply bg-gray-900 text-white;
+}
+
+/* Bracket specific styles */
+.bracket-container {
+  @apply relative flex flex-wrap md:flex-nowrap justify-center items-stretch p-4 gap-4;
+}
+
+.round-column {
+  @apply flex flex-col items-center justify-around p-2;
+  min-width: 180px;
+}
+
+.matchup-card {
+  @apply bg-white dark:bg-gray-800 rounded-lg shadow-bracket transition-all duration-300 mb-4 overflow-hidden;
+  width: 100%;
+  height: 120px;
+}
+
+.matchup-card.active {
+  @apply ring-2 ring-nba-blue dark:ring-blue-400;
+}
+
+.team-slot {
+  @apply flex items-center p-2 border-b dark:border-gray-700 cursor-pointer transition-colors;
+  height: 60px;
+}
+
+.team-slot:last-child {
+  @apply border-b-0;
+}
+
+.team-slot:hover {
+  @apply bg-gray-100 dark:bg-gray-700;
+}
+
+.team-slot.empty {
+  @apply bg-gray-100 dark:bg-gray-700 justify-center text-gray-400 dark:text-gray-500;
+}
+
+.team-logo {
+  @apply w-8 h-8 mr-2 object-contain;
+}
+
+.team-name {
+  @apply font-medium text-sm truncate flex-grow;
+}
+
+.team-seed {
+  @apply bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-xs px-1.5 py-0.5 rounded-full ml-1;
+}
+
+.team-score {
+  @apply font-bold text-sm ml-auto;
+}
+
+.winner-indicator {
+  @apply w-1 h-full bg-green-500;
+}
+
+/* Champion display */
+.champion-container {
+  @apply flex flex-col items-center justify-center p-4 bg-gradient-to-br from-yellow-400 to-yellow-600 dark:from-yellow-600 dark:to-yellow-800 rounded-xl shadow-lg;
+  min-height: 200px;
+}
+
+.champion-logo {
+  @apply w-24 h-24 object-contain mb-4;
+}
+
+.champion-name {
+  @apply text-xl font-bold text-white;
+}
+
+.champion-details {
+  @apply text-sm text-white opacity-80 mt-1;
+}
+
+/* Drag and drop styles */
+.team-draggable {
+  @apply cursor-grab bg-white dark:bg-gray-800 rounded-md shadow-md p-2 transition-transform;
+}
+
+.team-draggable.dragging {
+  @apply cursor-grabbing scale-105 shadow-lg;
+}
