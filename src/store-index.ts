@@ -1,8 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import bracketReducer from './slices/bracketSlice';
-import teamsReducer from './slices/teamsSlice';
-import uiReducer from './slices/uiSlice';
+import { bracketReducer, teamsReducer, uiReducer } from './store-slices';
 
 export const store = configureStore({
   reducer: {
